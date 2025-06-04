@@ -1,0 +1,31 @@
+{
+  "name": "anonwatch",
+  "version": "1.0.0",
+  "description": "Anonymous video upload and watch site",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gzmox/anonwatch.git"
+  },
+  "keywords": [
+    "video",
+    "upload",
+    "anonymous",
+    "express",
+    "multer"
+  ],
+  "author": "gzmox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gzmox/anonwatch/issues"
+  },
+  "homepage": "https://github.com/gzmox/anonwatch#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "multer": "^2.0.1"
+  }
+}
