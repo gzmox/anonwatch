@@ -5,8 +5,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Folder to store videos
-const uploadFolder = path.join(__dirname, 'uploads');
+const uploadFolder = '/uploads';
 if (!fs.existsSync(uploadFolder)) fs.mkdirSync(uploadFolder);
 
 const storage = multer.diskStorage({
