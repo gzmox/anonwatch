@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Anonymous Video Share</title>
-  <link rel="stylesheet" href="style.css">
+  <title>AnonWatch</title>
 </head>
 <body>
   <h1>Upload a Video</h1>
@@ -11,23 +9,5 @@
     <input type="file" name="video" accept="video/*" required>
     <button type="submit">Upload</button>
   </form>
-
-  <h2>All Uploaded Videos</h2>
-  <div id="videos"></div>
-
-  <script>
-    fetch('/list-videos')
-      .then(res => res.json())
-      .then(videos => {
-        const container = document.getElementById('videos');
-        videos.forEach(video => {
-          const el = document.createElement('video');
-          el.src = `/videos/${video}`;
-          el.controls = true;
-          el.width = 400;
-          container.appendChild(el);
-        });
-      });
-  </script>
 </body>
 </html>

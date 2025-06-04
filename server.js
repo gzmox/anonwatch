@@ -4,48 +4,23 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const uploadDir = path.join(__dirname, 'uploads');
 
-// Upload folder
-const uploadFolder = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadFolder)) {
-  fs.mkdirSync(uploadFolder);
+// Ensure upload directory exists
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
 }
 
-// Configure multer
 const storage = multer.diskStorage({
-  destination: (_, __, cb) => cb(null, uploadFolder),
-  filename: (_, file, cb) => cb(null, Date.now() + '-' + file.originalname)
+  destination: (req, file, cb) => cb(null, uploadDir),
+  filename: (req, file, cb) => cb(null, file.originalname)
 });
 const upload = multer({ storage });
 
-// Middleware
-app.use('/uploads', express.static(uploadFolder));
 app.use(express.static('public'));
 
-// Upload route
 app.post('/upload', upload.single('video'), (req, res) => {
-  res.redirect('/');
+  res.send('Video uploaded successfully!');
 });
 
-// Main page
-app.get('/', (req, res) => {
-  fs.readdir(uploadFolder, (err, files) => {
-    if (err) return res.send('Error reading files.');
-    const videos = files.filter(f => f.endsWith('.mp4'));
-    let html = `
-      <h1>📹 Anonymous Video Watch</h1>
-      <form method="POST" action="/upload" enctype="multipart/form-data">
-        <input type="file" name="video" accept="video/mp4" required />
-        <button type="submit">Upload</button>
-      </form>
-      <hr/>
-    `;
-    videos.forEach(file => {
-      html += `<video width="400" controls src="/uploads/${file}"></video><br/>`;
-    });
-    res.send(html);
-  });
-});
-
-app.listen(PORT, () => console.log(`Server on http://localhost:${PORT}`));
+app.listen(3000, () => console.log('Server running on port 3000'));

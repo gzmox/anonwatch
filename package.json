@@ -24,6 +24,9 @@
     "url": "https://github.com/gzmox/anonwatch/issues"
   },
   "homepage": "https://github.com/gzmox/anonwatch#readme",
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "express": "^4.18.2",
     "multer": "^1.4.5"
