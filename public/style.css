@@ -1,0 +1,15 @@
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  background: #f9f9f9;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+video {
+  margin: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
